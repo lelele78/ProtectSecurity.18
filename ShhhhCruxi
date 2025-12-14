@@ -164,7 +164,7 @@ achievementGiver({
             end
         end
         require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("I must crouch.", true)
-        game.Players.LocalPlayer.Character.Humanoid.Health = game.Players.LocalPlayer.Character.Humanoid.Health - 10
+        game.Players.LocalPlayer.Character.Humanoid.Health -= 10
     end
     if v11 ~= game.ReplicatedStorage.GameData.LatestRoom.Value then
         game:GetService("Workspace").Silence:Destroy()
