@@ -1,174 +1,95 @@
-game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
-local v1 = game:GetService("ReplicatedStorage").GameData.LatestRoom.Value
-local v2 = v1 - 1
-local v3 = v2 - 1
-local v4 = v3 - 1
-local v5 = v4 - 1
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/VoorPhale012/Fogroom/refs/heads/main/Whyilss"))()
+local dmg = true
+local entity = spawner.Create({
+	Entity = {
+		Name = "uesi",
+		Asset = "rbxassetid://117871986069304",
+		HeightOffset = 0
+	},
+	Lights = {
+		Flicker = {
+			Enabled = false,
+			Duration = 1
+		},
+		Shatter = true,
+		Repair = false
+	},
+	Earthquake = {
+		Enabled = false
+	},
+	CameraShake = {
+		Enabled = false,
+		Range = 100,
+		Values = {1.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+	},
+	Movement = {
+		Speed = 0.001,
+		Delay = 0,
+		Reversed = false
+	},
+	Rebounding = {
+		Enabled = false,
+		Type = "Ambush", -- "Blitz"
+		Min = 1,
+		Max = 1,
+		Delay = 2
+	},
+	Damage = {
+		Enabled = false,
+		Range = 40,
+		Amount = 125
+	},
+	Crucifixion = {
+		Enabled = true,
+		Range = 60,
+		Resist = false,
+		Break = true
+	},
+	Death = {
+		Type = "Guiding", -- "Curious"
+		Hints = {"Death", "Hints", "Go", "Here"},
+		Cause = ""
+	}
+})
+
+---====== Debug entity ======---
+
+entity:SetCallback("OnSpawned", function()
+
+function GetRoom()
+        local gruh = workspace.CurrentRooms
+        return gruh:FindFirstChild(game.ReplicatedStorage.GameData.LatestRoom.Value)
+end
+
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ModuleEvents = require(ReplicatedStorage.ModulesClient.Module_Events)
 local currentrooms = game.Workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]
 ModuleEvents.shatter(currentrooms)
-local v6 = ({
-    Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
-}).Functions.LoadCustomInstance("https://github.com/PABMAXICHAC/doors-monsters-models/blob/main/Silence_v2.rbxm?raw=true")
-local v7 = game.Players.LocalPlayer;
-(v7.Character or v7.CharacterAdded:Wait()):WaitForChild("Humanoid")
-if typeof(v6) == "Instance" and v6.ClassName == "Model" then
-    v6.PrimaryPart = v6.PrimaryPart or v6:FindFirstChildWhichIsA("BasePart")
-    if v6.PrimaryPart then
-        v6.PrimaryPart.Position = game:GetService("Workspace").CurrentRooms[v1].Parts.Floor.Position
-        v6.PrimaryPart.Position = v6.PrimaryPart.Position + Vector3.new(0, 14, 0)
-        v6.Parent = game.Workspace
-        v6.PrimaryPart.Anchored = true
-        if v6.Name then
-            v6.Name = "Silence"
-        end
-        v6:SetAttribute("IsCustomEntity", true)
-        v6:SetAttribute("NoAI", false)
-    end
-end
-local v8 = game.Players.LocalPlayer
-local vu9 = (v8.Character or v8.CharacterAdded:Wait()):WaitForChild("Humanoid")
-local function v10()
-    return vu9.WalkSpeed == 15
-end
-local v11 = game.ReplicatedStorage.GameData.LatestRoom.Value
-while true do
-    if true then
-        if game:GetService("Workspace").Silence.Silence_Model then
-            break
-        end
-    end
-    if v10() then
-        if game.Players.LocalPlayer.Character:FindFirstChild("Crucifix") then
-            local v12 = ({
-                DefaultConfig = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/DefaultConfig.lua"))(),
-                Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
-            }).Functions.LoadCustomInstance("https://github.com/PABMAXICHAC/doors-monsters-models/blob/main/pentafix.rbxm?raw=true")
-            v12.Parent = game.Workspace
-            if typeof(v12) == "Instance" and v12.ClassName == "Model" then
-                v12:MoveTo(game.workspace.Silence.Silence_Model.CFrame.Position - Vector3.new(0, 13, 0))
-                local v13 = next
-                local v14, v15 = v12:GetDescendants()
-                while true do
-                    local v16
-                    v15, v16 = v13(v14, v15)
-                    if v15 == nil then
-                        break
-                    end
-                    if v16.Name == "BeamChain" and v16.ClassName == "Beam" then
-                        v16:Destroy()
-                    end
-                end
-                local v17 = game.Players.LocalPlayer.Character.Crucifix.Handle:Clone()
-                v17.Name = "cruxy1"
-                v17.Parent = game.Workspace
-                v17.Anchored = true
-                v17.Material = Enum.Material.Neon
-                v17.Color = Color3.fromRGB(119, 255, 238)
-                game.Players.LocalPlayer.Character.Crucifix:Destroy()
-                wait(1)
-                local v18 = game:GetService("TweenService")
-                coroutine.wrap(function()
-                    local v19 = game:GetService("TweenService")
-                    local vu20 = 1.2
-                    local v21 = TweenInfo.new(vu20, Enum.EasingStyle.Linear)
-                    local vu22 = v19:Create(game.Workspace.Pentagram.RingAddon, v21, {
-                        CFrame = game.Workspace.Pentagram.RingAddon.CFrame * CFrame.Angles(0, math.rad(120), 0)
-                    })
-                    local vu23 = v19:Create(game.Workspace.Pentagram.Circle, v21, {
-                        CFrame = game.Workspace.Pentagram.Circle.CFrame * CFrame.Angles(0, math.rad(120), 0)
-                    })
-                    local vu24 = v19:Create(game.Workspace.Pentagram.RingAddon, v21, {
-                        CFrame = game.Workspace.Pentagram.RingAddon.CFrame * CFrame.Angles(0, math.rad(240), 0)
-                    })
-                    local vu25 = v19:Create(game.Workspace.Pentagram.Circle, v21, {
-                        CFrame = game.Workspace.Pentagram.Circle.CFrame * CFrame.Angles(0, math.rad(240), 0)
-                    })
-                    local vu26 = v19:Create(game.Workspace.Pentagram.RingAddon, v21, {
-                        CFrame = game.Workspace.Pentagram.RingAddon.CFrame * CFrame.Angles(0, math.rad(360), 0)
-                    })
-                    local vu27 = v19:Create(game.Workspace.Pentagram.Circle, v21, {
-                        CFrame = game.Workspace.Pentagram.Circle.CFrame * CFrame.Angles(0, math.rad(360), 0)
-                    })
-                    wait(3)
-                    local v28 = vu22
-                    vu22.Play(v28)
-                    local v29 = vu23
-                    vu23.Play(v29)
-                    vu22.Completed:Connect(function()
-                        vu20 = 0.1
-                        vu24:Play()
-                    end)
-                    vu24.Completed:Connect(function()
-                        vu26:Play()
-                    end)
-                    vu26.Completed:Connect(function()
-                        vu22:Play()
-                    end)
-                    vu23.Completed:Connect(function()
-                        vu25:Play()
-                    end)
-                    vu25.Completed:Connect(function()
-                        vu27:Play()
-                    end)
-                    vu27.Completed:Connect(function()
-                        vu23:Play()
-                    end)
-                end)()
-                local v30 = game.Workspace.Silence.Silence_Model
-                local v31 = {
-                    Position = game.workspace.Silence.Silence_Model.CFrame.Position - Vector3.new(0, 14, 0)
-                };
-                ({}).Volume = 0
-                TweenInfo.new(2)
-                local v32 = {
-                    Position = v12.Entity.Position,
-                    Anchored = true
-                }
-                game.Workspace.Silence.Silence_Model.Scream.Volume = 1
-                v18:Create(v17, TweenInfo.new(5), v32)
-                local v33 = v18:Create(game.Workspace.Silence.Silence_Model.Scream, TweenInfo.new(3.1), {
-                    Volume = 0
-                })
-                game.Workspace.Silence.Silence_Model.Scream.SoundId = "rbxassetid://9114572377"
-                game.Workspace.Silence.Silence_Model.Scream.PlaybackSpeed = 0.3
-                game.Workspace.Silence.Silence_Model.Scream:Play()
-                wait(2.5)
-                v33:Play()
-                v18:Create(v30, TweenInfo.new(0.2), v31):Play()
-                wait(0.15)
-                game.Workspace.Silence.Silence_Model.Footsteps.SoundId = "rbxassetid://5579533230"
-                game.Workspace.Silence.Silence_Model.Footsteps.Volume = 1
-                game.Workspace.Silence.Silence_Model.Footsteps.PlaybackSpeed = 0.3
-                game.Workspace.Silence.Silence_Model.Footsteps:Play();
-                ({}).Transparency = 1
-                wait(2)
-                game.Workspace.Silence.Silence_Model.Footsteps:Stop()
-                wait(1)
-                game.Workspace.Silence.Silence_Model.Attachment.ParticleEmitter.Enabled = false
-                wait(0.3)
-                game.Workspace.Silence:Destroy()
-                v12:Destroy()
-                v17:Destroy()
-                local achievementGiver = loadstring(game:HttpGet("https://raw.githubusercontent.com/Voor-Pr00/Achivements/refs/heads/main/Voorpr0"))()
 
----====== Display achievement ======---
-achievementGiver({
-                    Title = "You shush",
-                    Desc = "Shut the hell up.",
-                    Reason = "Used Crucifix on Silence.",
-                    Image = "rbxassetid://11830081802"
-                })
-                break
-            end
-        end
-        require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("I must crouch.", true)
-        game.Players.LocalPlayer.Character.Humanoid.Health -= 10
-    end
-    if v11 ~= game.ReplicatedStorage.GameData.LatestRoom.Value then
-        game:GetService("Workspace").Silence:Destroy()
-        break
-    end
-    wait(1)
+local s = game.Workspace.uesi
+local ss = game.Workspace.uesi:FindFirstChildWhichIsA("BasePart") or game.Workspace.uesi:FindFirstChildWhichIsA("Part")
+ss.CFrame = GetRoom():WaitForChild("Parts").Floor.CFrame + Vector3.new(0,12,0)
+
+local ultimaroom = game.ReplicatedStorage.GameData.LatestRoom.Value
+local plr = game.Players.LocalPlayer
+local chr = plr.Character or plr.CharacterAdded:Wait()
+
+while true do
+wait(1)
+if dmg == true and not chr:GetAttribute("Crouching") then
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("I Must Crouch.",true)
+game.Players.LocalPlayer.Character.Humanoid.Health -= 10
+wait(0.9)
+game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Silence"
 end
+if game.Workspace:FindFirstChild("RepentanceNEW") or ultimaroom ~= game.ReplicatedStorage.GameData.LatestRoom.Value then
+dmg = false
+
+break end
+end
+
+end)
+
+---====== Run entity ======---
+
+entity:Run()
