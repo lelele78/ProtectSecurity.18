@@ -1,0 +1,141 @@
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+local v1 = game.JobId
+local v2 = string.gsub(v1, "%D+", "")
+local v3 = Random.new(v2 + 69969699):NextInteger(1, 5)
+local v4 = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
+v4.Name = "bl1"
+local v5 = Instance.new("Frame", v4)
+v5.Visible = false
+v5.Size = UDim2.new(1, 0, 1.066, 0)
+v5.Position = UDim2.new(0, 0, - 0.067, 0)
+v5.BackgroundTransparency = 1
+local v6 = Instance.new("ImageLabel", v5)
+v6.Size = UDim2.new(0.6, 0, 1, 0)
+v6.Position = UDim2.new(0.19, 0, 0, 0)
+v6.Image = "rbxassetid://12537555348"
+v6.BackgroundTransparency = 1
+v6.ImageTransparency = 0.67
+local v7 = game:GetService("TweenService")
+local v8 = "https://github.com/PABMAXICHAC/doors-monsters-models/blob/main/bliss_waiting_jumpscare.mp3?raw=true"
+local v9 = {
+    Volume = 1
+}
+if syn then
+    writefile("bliss_waiting_jumpscare.mp3", game:HttpGet(v8))
+    local v10 = Instance.new("Sound")
+    v10.Parent = game.Players.LocalPlayer
+    v10.SoundId = getsynasset("bliss_waiting_jumpscare.mp3")
+    v10.Volume = 0
+    v10.Name = "bliss_waiting_jumpscare"
+    v10.Looped = false
+    v10.Playing = false
+    local v11 = v7:Create(v10, TweenInfo.new(1.7), v9)
+    v10:Play()
+    v11:Play()
+else
+    writefile("bliss_waiting_jumpscare.mp3", game:HttpGet(v8))
+    local v12 = Instance.new("Sound")
+    v12.Parent = game.Players.LocalPlayer
+    v12.SoundId = getcustomasset("bliss_waiting_jumpscare.mp3")
+    v12.Volume = 0
+    v12.Name = "bliss_waiting_jumpscare"
+    v12.Looped = false
+    v12.Playing = false
+    local v13 = v7:Create(v12, TweenInfo.new(1.7), v9)
+    v12:Play()
+    v13:Play()
+end
+wait(1)
+local v14 = workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")]
+Color3.fromRGB(255, 255, 50)
+local v15 = 5
+local v16 = {
+    Color = Color3.fromRGB(255, 255, 50)
+}
+v14[game.Players.LocalPlayer:GetAttribute("CurrentRoom")].SurfaceLight.Enabled = true
+v7:Create(v14[game.Players.LocalPlayer:GetAttribute("CurrentRoom")].SurfaceLight, TweenInfo.new(v15), v16):Play()
+local v17, v18, v19 = pairs(v14.Assets:GetDescendants())
+while true do
+    local v20
+    v19, v20 = v17(v18, v19)
+    if v19 == nil then
+        break
+    end
+    if v20:FindFirstChild("LightFixture") then
+        v7:Create(v20.LightFixture.Neon, TweenInfo.new(v15), v16):Play()
+        local v21, v22, v23 = pairs(v20.LightFixture:GetChildren())
+        while true do
+            local v24
+            v23, v24 = v21(v22, v23)
+            if v23 == nil then
+                break
+            end
+            if v24:IsA("SpotLight") or v24:IsA("PointLight") then
+                v7:Create(v24, TweenInfo.new(v15), v16):Play()
+            end
+        end
+    end
+end
+wait(3)
+wait(v3)
+game.Players.LocalPlayer.bliss_waiting_jumpscare:Destroy()
+if game.Players.LocalPlayer.Character:GetAttribute("Crouching") then
+    local v25 = "https://github.com/PABMAXICHAC/doors-monsters-models/blob/main/bliss_sound.mp3?raw=true"
+    if syn then
+        writefile("bliss_sound.mp3", game:HttpGet(v25))
+        local v26 = Instance.new("Sound")
+        v26.Parent = game.Players.LocalPlayer
+        v26.SoundId = getsynasset("bliss_sound.mp3")
+        v26.Volume = 1
+        v26.Name = "bliss_sound.mp3"
+        v26.Looped = false
+        v26.Playing = true
+    else
+        writefile("bliss_sound.mp3", game:HttpGet(v25))
+        local v27 = Instance.new("Sound")
+        v27.Parent = game.Players.LocalPlayer
+        v27.SoundId = getcustomasset("bliss_sound.mp3")
+        v27.Volume = 1
+        v27.Name = "bliss_sound.mp3"
+        v27.Looped = false
+        v27.Playing = true
+    end
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+    game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Bliss [Crouched Early]"
+    warn("Player crouched early.")
+end
+wait(0.1)
+v5.Visible = true
+wait(0.66)
+v5.Visible = false
+v4:Destroy()
+local v28 = game.Players.LocalPlayer.Character:GetAttribute("Crouching")
+if v28 and game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
+    warn("Survived Bliss.")
+elseif v28 == false and game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
+    local v29 = "https://github.com/PABMAXICHAC/doors-monsters-models/blob/main/bliss_sound.mp3?raw=true"
+    if syn then
+        writefile("bliss_sound.mp3", game:HttpGet(v29))
+        local v30 = Instance.new("Sound")
+        v30.Parent = game.Players.LocalPlayer
+        v30.SoundId = getsynasset("bliss_sound.mp3")
+        v30.Volume = 1
+        v30.Name = "bliss_sound.mp3"
+        v30.Looped = false
+        v30.Playing = false
+        v30:Play()
+    else
+        writefile("bliss_sound.mp3", game:HttpGet(v29))
+        local v31 = Instance.new("Sound")
+        v31.Parent = game.Players.LocalPlayer
+        v31.SoundId = getcustomasset("bliss_sound.mp3")
+        v31.Volume = 1
+        v31.Name = "bliss_sound.mp3"
+        v31.Looped = false
+        v31.Playing = false
+        v31:Play()
+    end
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+    game.ReplicatedStorage.GameStats["Player_" .. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Bliss"
+    warn("Player did not crouch in time.")
+end
