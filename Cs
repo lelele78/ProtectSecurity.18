@@ -244,7 +244,8 @@ function vu17.runEntity(pu38)
                         Volume = 1
                     }):Play()
                     local v79 = {
-                        DefaultConfig = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/DefaultConfig.lua"))(),
+    DefaultConfig = loadstring(game:HttpGet("https://raw.githubusercontent.com/lelele78/ProtectSecurity.18/refs/heads/main/DefautConfig"))(),
+
                         Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
                     }
                     local v80 = game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game
