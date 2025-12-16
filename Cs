@@ -12,7 +12,7 @@ local vu11 = 60
 local vu12 = workspace.FindPartOnRayWithIgnoreList
 local vu13 = vu10.WorldToViewportPoint
 local vu14 = {
-    DefaultConfig = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/DefaultConfig.lua"))(),
+    DefaultConfig = loadstring(game:HttpGet("https://raw.githubusercontent.com/lelele78/ProtectSecurity.18/refs/heads/main/DefautConfig"))(),
     Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
 }
 local vu15 = {
